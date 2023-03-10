@@ -1,0 +1,14 @@
+##########################
+#      CustomWelcome     #
+##########################
+# Author: Beeted_
+# Version: 1.0
+
+# Requires PlaceholderAPI installed: https://www.spigotmc.org/resources/placeholderapi.6245/
+# To see the available variables: https://github.com/PlaceholderAPI/PlaceholderAPI/wiki/Placeholders
+
+config:
+  enable-join-message: true #Set this to false for disable the message.
+  join-message: "&7[&a+&7] &bPlayer &d%player_name% &bhas joined the server."
+  enable-quit-message: true #Set this to false for disable the message.
+  quit-message: "&7[&c-&7] &bPlayer &d%player_name% &bhas left the server."
