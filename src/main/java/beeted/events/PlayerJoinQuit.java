@@ -10,6 +10,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import java.util.List;
+
 public class PlayerJoinQuit implements Listener {
     private final CustomWelcome plugin;
 
@@ -29,6 +31,20 @@ public class PlayerJoinQuit implements Listener {
             event.setJoinMessage(ChatColor.translateAlternateColorCodes('&', message));
         } else {
             event.setJoinMessage(null);
+        }
+
+        String motdpath = "motd.enable-motd-message";
+
+        if (config.getString(motdpath).equals("true")) {
+            String text = "motd.motd-message";
+            List<String> messages = plugin.getConfig().getStringList(text);
+
+            for (int i=0; i<messages.size();i++) {
+                String motdtext = PlaceholderAPI.setPlaceholders(player, messages.get(i));
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', motdtext));
+            }
+        } else {
+            player.sendMessage((String) null);
         }
     }
 

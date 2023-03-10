@@ -21,13 +21,13 @@ public final class CustomWelcome extends JavaPlugin {
              * We register the EventListener here, when PlaceholderAPI is installed.
              * Since all events are in the main class (this class), we simply use "this"
              */
-            console.sendMessage("[CustomWelcome] Found PlaceholderAPI installed, CustomWelcome is supported.");
+            console.sendMessage("[CustomWelcome] Found PlaceholderAPI installed.");
         } else {
             /*
              * We inform about the fact that PlaceholderAPI isn't installed and then
              * disable this plugin to prevent issues.
              */
-            getLogger().warning("PlaceholderAPI not found, it is recommended to install it.");
+            getLogger().warning("PlaceholderAPI not found. PlaceholderAPI is required.");
         }
         registerCommands();
         getConfig().options().copyDefaults();
