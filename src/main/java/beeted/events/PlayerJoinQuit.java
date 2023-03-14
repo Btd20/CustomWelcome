@@ -24,7 +24,7 @@ public class PlayerJoinQuit implements Listener {
         FileConfiguration config = plugin.getConfig();
         String path = "config.enable-join-message";
 
-        if (config.getString(path).equals("true")) {
+        if (config.getString(path).equals("true") && player.hasPermission("customwelcome.join.show")) {
             String text = "config.join-message";
             String message = config.getString(text);
             message = PlaceholderAPI.setPlaceholders(player, message);
@@ -36,15 +36,17 @@ public class PlayerJoinQuit implements Listener {
         String motdpath = "motd.enable-motd-message";
 
         if (config.getString(motdpath).equals("true")) {
-            String text = "motd.motd-message";
-            List<String> messages = plugin.getConfig().getStringList(text);
+            if (player.hasPermission("customwelcome.motd.show")) {
+                String text = "motd.motd-message";
+                List<String> messages = plugin.getConfig().getStringList(text);
 
-            for (int i=0; i<messages.size();i++) {
-                String motdtext = PlaceholderAPI.setPlaceholders(player, messages.get(i));
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', motdtext));
+                for (int i = 0; i < messages.size(); i++) {
+                    String motdtext = PlaceholderAPI.setPlaceholders(player, messages.get(i));
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', motdtext));
+                }
             }
         } else {
-            player.sendMessage((String) null);
+            event.setJoinMessage(null);
         }
     }
 
@@ -54,7 +56,7 @@ public class PlayerJoinQuit implements Listener {
         FileConfiguration config = plugin.getConfig();
         String path = "config.enable-quit-message";
 
-        if (config.getString(path).equals("true")) {
+        if (config.getString(path).equals("true") && player.hasPermission("customwelcome.quit.show")) {
             String text = "config.quit-message";
             String message = config.getString(text);
             message = PlaceholderAPI.setPlaceholders(player, message);

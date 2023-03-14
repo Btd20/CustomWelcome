@@ -25,23 +25,28 @@ public class PrincipalCommand implements CommandExecutor {
         } else {
             Player player = (Player) sender;
             if (args.length > 0) {
-                if (args[0].equalsIgnoreCase("version")) {
-                    player.sendMessage(name + ChatColor.DARK_GREEN + "Plugin version: 1.0");
-                    return true;
-                } else if (args[0].equalsIgnoreCase("reload")) {
-                    plugin.reloadConfig();
-                    player.sendMessage(name + ChatColor.DARK_GREEN + "Plugin reloaded.");
-                    return true;
-                } else if (args[0].equalsIgnoreCase("motd")) {
-                    String text = "motd.motd-message";
-                    List<String> messages = plugin.getConfig().getStringList(text);
-                    for (int i=0; i<messages.size();i++) {
-                        String motdtext = PlaceholderAPI.setPlaceholders(player, messages.get(i));
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', motdtext));
+                if (player.hasPermission("customwelcome.admin")) {
+                    if (args[0].equalsIgnoreCase("version")) {
+                        player.sendMessage(name + ChatColor.DARK_GREEN + "Plugin version: 1.0");
+                        return true;
+                    } else if (args[0].equalsIgnoreCase("reload")) {
+                        plugin.reloadConfig();
+                        player.sendMessage(name + ChatColor.DARK_GREEN + "Plugin reloaded.");
+                        return true;
+                    } else if (args[0].equalsIgnoreCase("motd")) {
+                        String text = "motd.motd-message";
+                        List<String> messages = plugin.getConfig().getStringList(text);
+                        for (int i = 0; i < messages.size(); i++) {
+                            String motdtext = PlaceholderAPI.setPlaceholders(player, messages.get(i));
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', motdtext));
+                        }
+                        return true;
+                    } else {
+                        player.sendMessage(name + ChatColor.DARK_RED + "This command does not exist.");
+                        return true;
                     }
-                    return true;
                 } else {
-                    player.sendMessage(name+ChatColor.DARK_RED+"This command does not exist.");
+                    player.sendMessage(ChatColor.RED+"You don't have permission.");
                     return true;
                 }
             } else {
