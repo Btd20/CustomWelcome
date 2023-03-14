@@ -16,6 +16,8 @@ config:
   join-message: "&7[&a+&7] &bPlayer &d%player_name% &bhas joined the server."
   enable-quit-message: true #Set this to false for disable the message.
   quit-message: "&7[&c-&7] &bPlayer &d%player_name% &bhas left the server."
+  enable-first-join-message: true
+  first-join-message: "&7[&a+&7] &bPlayer &d%player_name% &bis new on the server. &7(&8#%player_count%&7)"
 
 # MOTD config.
 motd:
@@ -27,3 +29,5 @@ motd:
   - ""
   - "&e            www.example.com"
   - "&7&m▶----------------------------◀"
+
+player-count: 0 # It is recommended not to touch this parameter.

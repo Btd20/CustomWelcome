@@ -23,12 +23,32 @@ public class PlayerJoinQuit implements Listener {
         Player player = event.getPlayer();
         FileConfiguration config = plugin.getConfig();
         String path = "config.enable-join-message";
+        String path2 = "config.enable-first-join-message";
+
+        if(config.getString(path2).equals("true")) {
+            if(!player.hasPlayedBefore()) {
+                final int Count = plugin.getConfig().getInt("player-count");
+                plugin.getConfig().set("player-count", Count + 1);
+                plugin.saveConfig();
+                String text = "config.first-join-message";
+                String message = config.getString(text);
+                if (message.contains("%player_count%")) {
+                    message = message.replace("%player_count%", String.valueOf(Count));
+                }
+                message = PlaceholderAPI.setPlaceholders(player, message);
+                event.setJoinMessage(ChatColor.translateAlternateColorCodes('&', message));
+            }
+        } else {
+            event.setJoinMessage(null);
+        }
 
         if (config.getString(path).equals("true") && player.hasPermission("customwelcome.join.show")) {
-            String text = "config.join-message";
-            String message = config.getString(text);
-            message = PlaceholderAPI.setPlaceholders(player, message);
-            event.setJoinMessage(ChatColor.translateAlternateColorCodes('&', message));
+            if (player.hasPlayedBefore()) {
+                String text = "config.join-message";
+                String message = config.getString(text);
+                message = PlaceholderAPI.setPlaceholders(player, message);
+                event.setJoinMessage(ChatColor.translateAlternateColorCodes('&', message));
+            }
         } else {
             event.setJoinMessage(null);
         }

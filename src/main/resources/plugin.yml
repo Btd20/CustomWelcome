@@ -1,0 +1,17 @@
+name: CustomWelcome
+version: '${project.version}'
+author: Beeted_
+main: beeted.customwelcome.CustomWelcome
+api-version: 1.19
+
+depend: [PlaceholderAPI]
+
+commands:
+  cw:
+    description: Principal command.
+  version:
+    description: Check the plugin version.
+  reload:
+    description: Reload the plugin config.
+  motd:
+    description: Previews the active motd in the config.
