@@ -4,6 +4,9 @@
 # Author: Beeted_
 # Version: 1.0
 
+# Users need permissions to see join, quit, and motd messages.
+# To see the list of permissions go to the CustomWelcome Spigot page: https://www.spigotmc.org/resources/%E2%AD%90-customwelcome-%E2%AD%90-customize-join-leave-motd-messages.108510/
+
 # Requires PlaceholderAPI installed: https://www.spigotmc.org/resources/placeholderapi.6245/
 # To see the available variables: https://github.com/PlaceholderAPI/PlaceholderAPI/wiki/Placeholders
 
