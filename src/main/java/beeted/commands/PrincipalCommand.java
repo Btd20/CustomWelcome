@@ -12,22 +12,23 @@ import org.bukkit.entity.Player;
 import java.util.List;
 
 public class PrincipalCommand implements CommandExecutor {
-    private final String name = ChatColor.GRAY+"["+ChatColor.AQUA+"CustomWelcome"+ChatColor.GRAY+"] ";
+    private final String name = ChatColor.GRAY + "[" + ChatColor.AQUA + "CustomWelcome" + ChatColor.GRAY + "] ";
     private final CustomWelcome plugin;
-    public PrincipalCommand (CustomWelcome plugin) {
+
+    public PrincipalCommand(CustomWelcome plugin) {
         this.plugin = plugin;
     }
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            Bukkit.getConsoleSender().sendMessage(name+ChatColor.RED+"You can't execute commands from console.");
+            Bukkit.getConsoleSender().sendMessage(name + ChatColor.RED + "You can't execute commands from console.");
             return false;
         } else {
             Player player = (Player) sender;
             if (args.length > 0) {
                 if (player.hasPermission("customwelcome.admin")) {
                     if (args[0].equalsIgnoreCase("version")) {
-                        player.sendMessage(name + ChatColor.DARK_GREEN + "Plugin version: 1.0");
+                        player.sendMessage(name + ChatColor.DARK_GREEN + "Plugin version: 1.4");
                         return true;
                     } else if (args[0].equalsIgnoreCase("reload")) {
                         plugin.reloadConfig();
@@ -46,11 +47,11 @@ public class PrincipalCommand implements CommandExecutor {
                         return true;
                     }
                 } else {
-                    player.sendMessage(ChatColor.RED+"You don't have permission.");
+                    player.sendMessage(ChatColor.RED + "You don't have permission.");
                     return true;
                 }
             } else {
-                player.sendMessage(name+ChatColor.GRAY+"This command does not exist.\n"+ChatColor.GRAY+"Valid commands are:\n"+ChatColor.RED+"/cw version"+ChatColor.DARK_GRAY+" - Check the plugin version.\n"+ChatColor.RED+"/cw reload"+ChatColor.DARK_GRAY+" - Reload the plugin config.");
+                player.sendMessage(name + ChatColor.GRAY + "This command does not exist.\n" + ChatColor.GRAY + "Valid commands are:\n" + ChatColor.RED + "/cw version" + ChatColor.DARK_GRAY + " - Check the plugin version.\n" + ChatColor.RED + "/cw reload" + ChatColor.DARK_GRAY + " - Reload the plugin config.");
                 return true;
             }
         }

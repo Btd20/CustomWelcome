@@ -3,6 +3,7 @@ version: '${project.version}'
 author: Beeted_
 main: beeted.customwelcome.CustomWelcome
 api-version: 1.13
+website: www.spigotmc.org/resources/%E2%AD%90-customwelcome-%E2%AD%90-1-13-1-19-4-customize-join-leave-motd-messages.108510/
 
 depend: [PlaceholderAPI]
 
@@ -11,7 +12,10 @@ commands:
     description: Principal command.
   version:
     description: Check the plugin version.
+    permission: customwelcome.admin
   reload:
     description: Reload the plugin config.
+    permission: customwelcome.admin
   motd:
     description: Previews the active motd in the config.
+    permission: customwelcome.admin

@@ -6,7 +6,7 @@
 
     <groupId>beeted</groupId>
     <artifactId>CustomWelcome</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.4</version>
     <packaging>jar</packaging>
 
     <name>CustomWelcome</name>
