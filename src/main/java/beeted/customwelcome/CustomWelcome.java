@@ -4,6 +4,7 @@ import beeted.commands.Commands;
 import beeted.commands.PrincipalCommand;
 import beeted.events.PlayerJoinQuit;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;

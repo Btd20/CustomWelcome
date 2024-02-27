@@ -2,7 +2,7 @@
 #      CustomWelcome     #
 ##########################
 # Author: Beeted_
-# Version: 1.0
+# Version: 1.9
 
 # Users need permissions to see join, quit, and motd messages.
 # To see the list of permissions go to the CustomWelcome Spigot page: https://www.spigotmc.org/resources/%E2%AD%90-customwelcome-%E2%AD%90-customize-join-leave-motd-messages.108510/
@@ -29,5 +29,9 @@ motd:
   - ""
   - "&e            www.example.com"
   - "&7&m▶----------------------------◀"
+
+server-list-motd:
+  enable-server-list-motd-message: true #Set this to false for disable the message.
+  message: "&aWelcome to the server! Visit our website at www.your-site.com"
 
 player-count: 0 # It is recommended not to touch this parameter.

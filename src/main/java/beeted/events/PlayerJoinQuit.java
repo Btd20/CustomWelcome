@@ -2,6 +2,7 @@ package beeted.events;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import beeted.customwelcome.CustomWelcome;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -9,6 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.server.ServerListPingEvent;
 
 import java.util.List;
 
@@ -81,6 +83,17 @@ public class PlayerJoinQuit implements Listener {
             event.setQuitMessage(ChatColor.translateAlternateColorCodes('&', message));
         } else {
             event.setQuitMessage(null);
+        }
+    }
+
+    @EventHandler
+    public void onServerListPing(ServerListPingEvent event) {
+        FileConfiguration config = plugin.getConfig();
+        String path = "server-list-motd.enable-server-list-motd-message";
+
+        if (config.getString(path).equals("true")) {
+            String motd = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("server-list-motd.message"));
+            event.setMotd(motd);
         }
     }
 }
