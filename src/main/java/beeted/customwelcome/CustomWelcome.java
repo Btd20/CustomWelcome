@@ -16,6 +16,11 @@ public final class CustomWelcome extends JavaPlugin {
     public String configRute;
     @Override
     public void onEnable() {
+
+        //Metrics
+        int pluginId = 23347;
+        Metrics metrics = new Metrics(this, pluginId);
+
         console.sendMessage("[CustomWelcome] Reading config.yml.");
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             /*
