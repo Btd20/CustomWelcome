@@ -21,6 +21,9 @@ public final class CustomWelcome extends JavaPlugin {
         int pluginId = 23347;
         Metrics metrics = new Metrics(this, pluginId);
 
+        UpdateIcon updateIcon = new UpdateIcon(this);
+        updateIcon.createIconFolder();
+
         console.sendMessage("[CustomWelcome] Reading config.yml.");
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             /*
